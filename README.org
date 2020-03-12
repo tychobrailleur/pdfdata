@@ -1,0 +1,13 @@
+* pdfdata
+
+  Display PDF Data on the command line.
+
+** Usage
+
+TODO
+
+** License
+
+   Copyright © 2020 Sébastien Le Callonnec
+
+   This project is licensed under the GNU General Public License v3.0.
