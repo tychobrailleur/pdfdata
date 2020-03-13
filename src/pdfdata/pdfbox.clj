@@ -16,8 +16,10 @@
                   .getWidth)]
     {:title (.getTitle info)
      :author (.getAuthor info)
+     :creator (.getCreator info)
      :keywords (.getKeywords info)
      :creation-date (.getCreationDate info)
      :modification-date (.getModificationDate info)
+     :producer (.getProducer info)
      :width width
      :height height}))

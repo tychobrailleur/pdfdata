@@ -1,5 +1,6 @@
 (ns pdfdata.core
-  (:require [pdfdata.pdfbox :as pdfbox]))
+  (:require [pdfdata.pdfbox :as pdfbox])
+  (:gen-class))
 
 (defn format-dimensions [width height]
   (str width " x " height))
