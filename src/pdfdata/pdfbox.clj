@@ -21,5 +21,6 @@
      :creation-date (.getCreationDate info)
      :modification-date (.getModificationDate info)
      :producer (.getProducer info)
+     :pages (.getNumberOfPages doc)
      :width width
      :height height}))
