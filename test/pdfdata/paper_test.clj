@@ -15,9 +15,23 @@
    {:size "A9" :width 37 :height 52}
    {:size "A10" :width 26 :height 37}])
 
+(def us-sizes
+  [{:size "US half letter" :width 397 :height 612}
+   {:size "US junior legal" :width 360 :height 576}
+   {:size "US letter" :width 612 :height 792}
+   {:size "US legal" :width 612 :height 1009}])
+
 (t/deftest test-iso-size
   (t/testing "A series"
     (t/is (every? #(= (sut/iso-aseries-size %) (nth a-sizes %)) (range 11)))))
+
+(t/deftest test-us-size
+  (t/testing "US sizes"
+    (t/is (every? #(= (sut/paper-format
+                       (:width (nth us-sizes %))
+                       (:height (nth us-sizes %)))
+                      (:size (nth us-sizes %)))
+                  (range 4)))))
 
 (t/deftest test-paper-format
   (t/testing "A series"

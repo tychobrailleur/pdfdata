@@ -61,11 +61,17 @@
 
 
 (defn paper-format
-  "Returns the paper format based on the `width` and `height` in pts."
+  "Returns the paper format based on the `width` and `height` in pts.
+
+  Cf. https://papersizes.io/us/ for US paper sizes"
   [width height]
   (cond
-    (and (< (abs (- (min width height) 397)) 0.1)
-         (< (abs (- (max width height) 612)) 0.1)) "US half letter"
-    (and (< (abs (- (min width height) 612)) 0.1)
-         (< (abs (- (max width height) 792)) 0.1)) "US letter"
+    (and (< (abs (- (min width height) 397)) 0.5)
+         (< (abs (- (max width height) 612)) 0.5)) "US half letter"
+    (and (< (abs (- (min width height) 360)) 0.5)
+         (< (abs (- (max width height) 576)) 0.5)) "US junior legal"
+    (and (< (abs (- (min width height) 612)) 0.5)
+         (< (abs (- (max width height) 792)) 0.5)) "US letter"
+    (and (< (abs (- (min width height) 612)) 0.5)
+         (< (abs (- (max width height) 1009)) 0.5)) "US legal"
     :else (iso-paper-format (pt->mm width) (pt->mm height))))

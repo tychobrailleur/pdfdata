@@ -4,7 +4,11 @@
   (:gen-class))
 
 (defn format-dimensions [width height]
-  (str width " x " height " (" (paper/paper-format width height) ")"))
+  (let [format (paper/paper-format width height)
+        dimension-display (str width " x " height)]
+    (if format
+      (str dimension-display " (" format ")")
+      dimension-display)))
 
 (defn format-date [date]
   (-> (java.text.SimpleDateFormat. "dd/MM/yyyy HH:mm:ss")
