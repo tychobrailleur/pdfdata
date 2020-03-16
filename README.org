@@ -4,7 +4,9 @@
 
 ** Usage
 
-TODO
+   #+begin_src bash
+pdfdata <path/to/pdf>
+   #+end_src
 
 ** License
 

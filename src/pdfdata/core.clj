@@ -14,7 +14,13 @@
   (-> (java.text.SimpleDateFormat. "dd/MM/yyyy HH:mm:ss")
       (.format (.getTime date))))
 
+(defn validate-args [args]
+  (when (not= (count args) 1)
+    (println "Usage: pdfdata <path/to/pdf>")
+    (System/exit 1)))
+
 (defn -main [& args]
+  (validate-args args)
   (let [document (pdfbox/load-pdf (first args))
         info (pdfbox/get-doc-info document)]
     (println (format "Title: \t\t%s" (info :title)))
@@ -23,4 +29,5 @@
     (println (format "Creation Date: \t%s" (format-date (info :creation-date))))
     (println (format "Modif Date: \t%s" (format-date (info :modification-date))))
     (println (format "Number of Pages: \t%d" (info :pages)))
-    (println (format "Page Size: \t%s" (format-dimensions (info :width) (info :height))))))
+    (println (format "Page Size: \t%s" (format-dimensions (info :width) (info :height))))
+    (.close document)))
